@@ -121,13 +121,15 @@ export default function ForceGraph() {
     const simulation = d3.forceSimulation<Node>(data.nodes)
       .force("link", d3.forceLink<Node, Link>(data.links)
         .id(d => d.id)
-        .distance(d => d.source.isConnector || d.target.isConnector ? 120 : 60)
-        .strength(d => d.source.isConnector || d.target.isConnector ? 0.3 : 0.7))
+        .distance(d => ((d.source as Node).isConnector || (d.target as Node).isConnector) ? 120 : 60)
+        .strength(d => ((d.source as Node).isConnector || (d.target as Node).isConnector) ? 0.3 : 0.7))
       .force("charge", d3.forceManyBody()
-        .strength(d => d.isConnector ? -300 : -100)
-        .distanceMax(350))
+        .strength(d => (d as Node).isConnector ? -300 : -100)
+        .distanceMax(500))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collision", d3.forceCollide().radius(d => (d.size || 1) * 5))
+      .force("collide", d3.forceCollide()
+        .radius(d => (d as Node).size + 10)
+        .iterations(3))
       .velocityDecay(0.1); // Slower decay for continuous motion
 
     // Create curved links
@@ -162,9 +164,9 @@ export default function ForceGraph() {
 
     simulation.on("tick", () => {
       // Update curved links
-      link.attr("d", (d: any) => {
-        const dx = d.target.x - d.source.x;
-        const dy = d.target.y - d.source.y;
+      link.attr("d", (d: Link) => {
+        const dx = d.target.x! - d.source.x!;
+        const dy = d.target.y! - d.source.y!;
         const dr = Math.sqrt(dx * dx + dy * dy) * 1.5; // Adjust curve
         return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`;
       });

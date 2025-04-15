@@ -10,9 +10,18 @@ const nextConfig = {
     ],
     unoptimized: true, // This will allow local images to work without optimization
   },
-  output: 'export', // Enable static exports for GitHub Pages
-  basePath: process.env.NODE_ENV === 'production' ? '/lumoviz' : '', // Set base path for GitHub Pages
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/lumoviz/' : '', // Set asset prefix for GitHub Pages
+  // Configure based on deployment target
+  ...(process.env.GITHUB_PAGES === 'true' 
+    ? {
+        output: 'export', // Enable static exports for GitHub Pages
+        basePath: '/lumoviz', // Set base path for GitHub Pages
+        assetPrefix: '/lumoviz/', // Set asset prefix for GitHub Pages
+      } 
+    : {
+        // Default configuration for other deployment platforms like Vercel
+        output: 'standalone',
+      }
+  )
 }
 
 module.exports = nextConfig 
