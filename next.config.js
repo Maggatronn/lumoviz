@@ -16,6 +16,10 @@ const nextConfig = {
         output: 'export', // Enable static exports for GitHub Pages
         basePath: '/lumoviz', // Set base path for GitHub Pages
         assetPrefix: '/lumoviz/', // Set asset prefix for GitHub Pages
+        images: {
+          unoptimized: true,
+        },
+        trailingSlash: true,
       } 
     : {
         // Default configuration for other deployment platforms like Vercel
