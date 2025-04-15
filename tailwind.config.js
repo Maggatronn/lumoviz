@@ -5,6 +5,16 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'bg-yellow-glow',
+    'bg-primary',
+    'hover:bg-yellow-dark',
+    'hover:bg-accent',
+    'text-primary',
+    'border-primary',
+    'shadow-glow',
+    'shadow-glow-lg',
+  ],
   theme: {
     extend: {
       colors: {

@@ -1,31 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  output: 'export',
+  basePath: '/lumoviz',
+  assetPrefix: '/lumoviz/',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'dev.d3pi1a7zayw2hq.amplifyapp.com',
-      },
-    ],
-    unoptimized: true, // This will allow local images to work without optimization
+    unoptimized: true,
   },
-  // Configure based on deployment target
-  ...(process.env.GITHUB_PAGES === 'true' 
-    ? {
-        output: 'export', // Enable static exports for GitHub Pages
-        basePath: '/lumoviz', // Set base path for GitHub Pages
-        assetPrefix: '/lumoviz/', // Set asset prefix for GitHub Pages
-        images: {
-          unoptimized: true,
-        },
-        trailingSlash: true,
-      } 
-    : {
-        // Default configuration for other deployment platforms like Vercel
-        output: 'standalone',
-      }
-  )
+  reactStrictMode: true,
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 

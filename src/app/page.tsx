@@ -11,6 +11,9 @@ export default function Home() {
 
   const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfWvRyLr1vmKrZkKCs0rpScr5ByXnJk_WfK710zpvEM6f2JNQ/viewform?usp=header';
 
+  // Base path for GitHub Pages
+  const basePath = '/lumoviz';
+
   return (
     <main className="min-h-screen bg-yellow-glow">
       {/* Hero Section with Force Graph */}
@@ -91,7 +94,7 @@ export default function Home() {
             >
               <div className="w-48 h-48 mb-6">
                 <img
-                  src="/images/emily-headshot.jpeg"
+                  src={`${basePath}/images/emily-headshot.jpeg`}
                   alt="Emily S. Lin"
                   className="w-full h-full rounded-full object-cover shadow-glow"
                 />
@@ -110,7 +113,7 @@ export default function Home() {
             >
               <div className="w-48 h-48 mb-6">
                 <img
-                  src="/images/maggie-headshot.jpeg"
+                  src={`${basePath}/images/maggie-headshot.jpeg`}
                   alt="Maggie Hughes"
                   className="w-full h-full rounded-full object-cover shadow-glow"
                 />
