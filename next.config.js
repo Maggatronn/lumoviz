@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/lumoviz',
-  assetPrefix: '/lumoviz/',
+  // basePath: '/lumoviz',
+  // assetPrefix: '/lumoviz/',
   images: {
     unoptimized: true,
   },
