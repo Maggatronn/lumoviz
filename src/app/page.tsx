@@ -94,7 +94,7 @@ export default function Home() {
             >
               <div className="w-48 h-48 mb-6">
                 <img
-                  src={`${basePath}/images/emily-headshot.jpeg`}
+                  src={`/images/emily-headshot.jpeg`}
                   alt="Emily S. Lin"
                   className="w-full h-full rounded-full object-cover shadow-glow"
                 />
@@ -113,7 +113,7 @@ export default function Home() {
             >
               <div className="w-48 h-48 mb-6">
                 <img
-                  src={`${basePath}/images/maggie-headshot.jpeg`}
+                  src={`/images/maggie-headshot.jpeg`}
                   alt="Maggie Hughes"
                   className="w-full h-full rounded-full object-cover shadow-glow"
                 />
